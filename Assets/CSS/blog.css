@@ -1,0 +1,41 @@
+.date{
+
+    font-size: 15px;
+    font-style: italic;
+    text-transform: uppercase ;
+    color: rgb(24, 24, 105);
+    float: right;
+   }
+.Default{
+    margin-top: 10px;
+    padding-bottom: 20px;
+}
+.user{
+
+    font-size: 15px;
+    font-style: italic;
+    color: rgb(9, 9, 26);
+    float: left;
+   }
+
+.date:hover{
+    text-decoration: underline;
+}
+.date::before{
+    content: "🕐";
+}
+.msg{
+    display: block;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+
+    margin-bottom: 20px;
+}
+.msg::before{
+    content: "📩  ";
+}
+textarea{
+    resize: none;
+}
+

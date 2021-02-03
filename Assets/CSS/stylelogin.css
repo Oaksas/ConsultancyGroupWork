@@ -1,0 +1,87 @@
+
+
+
+section  {
+position: relative;
+text-align: center;
+margin-top: 10px;
+font-size: 3rem;
+
+
+}
+input[type="button"]{
+    background-color: rgb(23, 167, 99);
+    width: 20%;
+    font-size: 2rem;
+    margin-top: 30px;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 0 15px 8px 0 rgba(0, 0, 0, 0.8), 0 6px 20px 0 rgba(0, 0, 0, 0.8);
+
+
+    color: white;
+}
+#submit{
+    background-color: rgb(23, 167, 99);
+    width: 20%;
+    font-size: 2rem;
+    margin-top: 30px;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 0 15px 8px 0 rgba(0, 0, 0, 0.8), 0 6px 20px 0 rgba(0, 0, 0, 0.8);
+
+
+    color: white;
+}
+nav{
+    border-radius: 0px 30px 30px 0px;
+    margin-left: -10px;
+    box-shadow: 0 15px 8px 0 rgba(0, 0, 0, 0.8), 0 6px 20px 0 rgba(0, 0, 0, 0.8);
+    width: 40%;
+    padding-top: 0px;
+    padding-top: 0em;
+
+}
+.header{
+    margin-left: 10px;
+    font-size: 3rem;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+    color: rgb(23, 167, 99);
+
+}
+label{
+    font-weight: bold;
+    color: rgb(23, 167, 99);
+}
+#login31,#login32,#login33,#login3{
+
+    font-size: 1rem;
+    width: 50%;
+
+}
+input[type="text"]{
+    width:50%;
+    border-radius: 10px 10px 10px 10px;
+    height: 20px;
+
+
+}
+#profile{
+position: relative;
+text-align: center;
+margin-top: 15%;
+font-size: 2rem;
+}
+#profile-button{
+    width: 80%;
+    font-size: 2rem;
+}
+.demo1{
+    width:20%;
+    font-size: 1px;
+}
+a{
+    text-decoration: none;
+}
+a#next{
+    background-color: black;
+}
