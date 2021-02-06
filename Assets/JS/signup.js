@@ -32,16 +32,4 @@ recovery.style.display = "block";
 
 
 }
-function recoveryFun(){
-    fName.style.display = "none";
-    lName.style.display = "none";
-    
-    signUpBtn.style.display = "none";
-    logInBtn.style.display = "block";
-    recovery.style.display = "none";
-    recoveryBtn.style.display = "block";
-    
-    
-    
-    
-    }
+

@@ -59,6 +59,9 @@ if(strlen($password)<5){
 }
 return $errors;
 }
+
+
+
 function errorsR($email,$password){
 
     $errors = array();
@@ -88,17 +91,30 @@ function errorsR($email,$password){
      $errors[$count] =  mysqli_real_escape_string($conn,$error);
      $count++;
  }
- if($password != $passConfirm){
-     $error = "Password don't match";
-     $errors[$count] =  mysqli_real_escape_string($conn,$error);
-     $count++;
- }
  
  return $errors;
    
  }
  
  
+ function recoverAccount($email,$password){
+    $password = password_encrypt($password);
+    global $conn;
+    $query = "UPDATE users SET password ='{$password}' WHERE email='{$email}'";
+    return $query;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

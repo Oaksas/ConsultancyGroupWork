@@ -10,7 +10,12 @@
 </head>
 
 <?php include("Includes/db.php");?>
-<?php session_start();?>
+<?php session_start();
+
+if(isset($_GET["id"])){
+    $_SESSION["username"]=null;
+}
+?>
 
 
 <body>
@@ -98,7 +103,7 @@ style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-w
 <div class="row justify-content-center" >
     
     <div class="col-md-6 col-sm-12 ml-3 mb-4">
-     <a href="" class="text-primary" name = "recoverBtn" id="recovery">Don't remember your password?</a>
+     <a href="recovery.php" class="text-primary" target ="_BLANK">Don't remember your password?</a>
     </div>
   
 </div>
@@ -169,6 +174,8 @@ style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-w
                 $p = crypt($p,$row[1]);
 
                 if($p == $row[1]){
+                    $_SESSION["email"] = $row[0];
+
                     ?>
                     <script >
                     window.location.href ="recovery.php";

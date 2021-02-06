@@ -22,10 +22,8 @@
 <div class="row justify-content-center " >
     
     <div class="col-md-6  ml-3 mb-3">
-        <div class="btn-group" role="group" >
-            <button type="button" class="btn btn-light pl-5 pr-5 border-bottom" onclick="logIn()">Log In</button>
-    
-          </div> 
+    <span class = "text-secondary " id="recoveryMsg"> Enter your email and a New password..</span>   
+
         
         </div>
   
@@ -60,61 +58,30 @@ viewBox="0 0 172 172"
 style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#60b03d"><path d="M86,0c-21.99099,0 -39.69231,17.70132 -39.69231,39.69231v26.46154c-14.54868,0 -26.46154,11.91286 -26.46154,26.46154v52.92308c0,14.54868 11.91286,26.46154 26.46154,26.46154h79.38462c14.54868,0 26.46154,-11.91286 26.46154,-26.46154v-52.92308c0,-14.54868 -11.91286,-26.46154 -26.46154,-26.46154v-26.46154c0,-21.99099 -17.70132,-39.69231 -39.69231,-39.69231zM86,13.23077c15.06551,0 26.46154,11.39603 26.46154,26.46154v26.46154h-52.92308v-26.46154c0,-15.06551 11.39603,-26.46154 26.46154,-26.46154zM86,99.23077c7.28726,0 13.23077,5.94351 13.23077,13.23077c0,4.6256 -2.63581,9.17368 -6.61538,11.16346v15.29808c0,3.97957 -2.63581,6.61538 -6.61538,6.61538c-3.97956,0 -6.61538,-2.63581 -6.61538,-6.61538v-15.29808c-3.97956,-1.98978 -6.61538,-6.53786 -6.61538,-11.16346c0,-7.28726 5.94351,-13.23077 13.23077,-13.23077z"></path></g></g></svg>
 </span>
             </div>
-            <input type="password" class="form-control" placeholder="Password" name="passwordField"  id="passwordField" aria-label="Password" aria-describedby="basic-addon1">
+            <input type="password" class="form-control" placeholder="New Password" name="passwordField"  id="passwordField" aria-label="Password" aria-describedby="basic-addon1">
           </div>
     </div>
   
 </div>
 
-<!--Sign Up-->
-
-<!--Sign Up last-->
-
-
-
-<div class=" row justify-content-center" >
-    
-    <div class="col-md-6 col-sm-12  mb-3">
-        <input type="text" class="form-control" style="display: none;" name="fNameField"  id="fNameField" placeholder="First name" aria-label="First name" aria-describedby="basic-addon1">
-
-    </div>
-    
-</div>
-<div class=" row justify-content-center" >
-    
-    <div class="col-md-6  mb-3">
-        <input type="text" class="form-control"  style="display: none;" placeholder="Last name" name="lNameField"  id="lNameField" aria-label="lastname" aria-describedby="basic-addon1">
-
-    </div>
-  
-</div>
 
 
 
 
 
 
-<div class="row justify-content-center" >
-    
-    <div class="col-md-6 col-sm-12 ml-3 mb-4">
-     <a href="" class="text-primary" id="recovery" >Don't remember your password?</a>
-    </div>
-  
-</div>
+
+
 <div class="row justify-content-center" >
     
     <div class="col-md-6  ">
-        <button type="submit" class="btn btn-primary btn-lg btn-block" name = "logInBtn" id="logInBtn">Log In</button>
+        <button type="submit" class="btn btn-primary btn-lg btn-block" name = "recoverBtn" id="recoverBtn">Recover</button>
     </div>
   
 </div>
-<div class="row justify-content-center" >
-    
-    <div class="col-md-6  mb-3">
-        <button type="submit" class="btn btn-primary btn-lg btn-block" style="display: none;" name = "signUpBtn" id="signUpBtn">Sign Up</button>
-    </div>
-  
-</div>
+
+
+
 
 </form>
 
@@ -125,138 +92,54 @@ style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-w
 <?php
 
 
-     if(isset($_POST["logInBtn"])){
+     if(isset($_POST["recoverBtn"])){
+        include("Includes/create.php");
 
       
-                $p =(string)$_POST["passwordField"];
-
-               $u = (string)$_POST["emailField"];
-         
-
-
-         $u = mysqli_real_escape_string($conn,$u);
-         $p = mysqli_real_escape_string($conn,$p);
-
-        
-        
-         $query = "Select userName,password from userInfo";
-         $result =mysqli_query($conn,$query);
-
-        if(!$result){
-    
-           
-        }   
-    else{
-            $temp = 0;      
-        while($row = mysqli_fetch_row($result)){
+        $password =(string)$_POST["passwordField"];
+        $email = (string)$_POST["emailField"];
     
 
-           
-            if($u == $row[0] ){
-                $p = crypt($p,$row[1]);
 
-                if($p == $row[1]){
-                    header("Location:home.php");
-                    $_SESSION["email"] = $row[0];
-                    $temp=1;
-                    break;  
-                }
+         $email = mysqli_real_escape_string($conn,$email);
+         $password = mysqli_real_escape_string($conn,$password);
+
+         $errors =errorsR($email,$password);
+
+         if(!$errors){
+    
+            $query= recoverAccount($email,$password);
+            $result = mysqli_query($conn,$query);
+            ?>
+            <script >
+    document.getElementById("recoveryMsg").innerHTML = "Successfully Updated password";
+            </script>
+            <?php
+             
+            if(!$result){
                
-
-            }
-            elseif($u=="Admin@gmail.com"  ){
-                $p = crypt($p,$row[1]);
-
-                $pAdmin=crypt("getandforget",$row[1]);
-                if($p==$pAdmin){
-                    $_SESSION["email"] = "Admin@gmail.com";
-                    header("Location: adminPage.php");     
-                    break;
-                }
-                
-           
-            
-       
+                          
+                    }
+          
         }
-       
-    }
-    if($temp == 0){
-?>
-<script type="text/JavaScript">
-(function (){
-
+        
+        else{
+            ?>
+            <script >
+            
+            
 document.getElementById("emailField").style.border = "thin solid red";
 document.getElementById("passwordField").style.border = "thin solid red";
-
-}());
-</script>
-<?php        
-        
-      }
-    mysqli_free_result($result);
-         }
+            </script>
+            <?php
+        }
  
  
         }
-        else if(isset($_POST["signUpBtn"])){
-            include("Includes/create.php");
-            $password =(string)$_POST["passwordField"];
-            $email = (string)$_POST["emailField"];
-            $fName =$_POST["fNameField"];
-            $lName =$_POST["lNameField"];
-          
-            $errors =errors($email,$password);
-    
-if(empty($errors)){
-    ?>
-    <script type="text/JavaScript">
-    (function (){
-    
-    document.getElementById("passwordField").style.border = "none";
-    document.getElementById("emailField").style.border = "none";
-
-    
-    }());
-
-    </script>
-    <?php  
-    
-    $query= createAccount($fName,$lName,$email,$password);
-    $result = mysqli_query($conn,$query);
-    if(!$result){
-        ?>
-        <script>
-        alert('Some error occurred ...try again..')
-        </script>
-        <?php          
-           }
         
-}else{
-    if (in_array("password", $errors)){
-        ?>
-    <script type="text/JavaScript">
-    (function (){
+        
     
-    document.getElementById("passwordField").style.border = "thin solid red";
-    
-    }());
-    </script>
-    <?php  
-    }if (in_array("email", $errors)){
-        ?>
-    <script type="text/JavaScript">
-    (function (){
-    
-    document.getElementById("emailField").style.border = "thin solid red";
-    
-    }());
-    </script>
-    <?php  
-    }
-    
-}
 
-        }
         ?>
 
 <?php include("Includes/footer.php")?>
