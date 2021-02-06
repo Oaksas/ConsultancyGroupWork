@@ -24,7 +24,6 @@
     <div class="col-md-6  ml-3 mb-3">
         <div class="btn-group" role="group" >
             <button type="button" class="btn btn-light pl-5 pr-5 border-bottom" onclick="logIn()">Log In</button>
-            <button type="button" class="btn btn-light pl-5 pr-5 border-bottom" onclick="signUp()">Sign Up</button>
     
           </div> 
         
@@ -102,16 +101,6 @@ style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-w
     </div>
   
 </div>
-
-<div class="row justify-content-center " >
-    
-    <div class="col-md-6 col-sm-12 ml-3">
-<span class = "text-primary d-none">Please enter your email address.</span>   
-
-    </div>
-  
-</div>
-
 <div class="row justify-content-center" >
     
     <div class="col-md-6  ">
@@ -126,14 +115,6 @@ style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-w
     </div>
   
 </div>
-<div class="row justify-content-center" >
-    
-    <div class="col-md-6  mb-3">
-        <button type="submit" class="btn btn-primary btn-lg btn-block" style="display: none;" name = "recover" id="recoveryBtn">Recover </button>
-    </div>
-  
-</div>
-
 
 </form>
 
@@ -158,7 +139,7 @@ style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-w
 
         
         
-         $query = "Select Email,Password from users";
+         $query = "Select userName,password from userInfo";
          $result =mysqli_query($conn,$query);
 
         if(!$result){
@@ -175,13 +156,7 @@ style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-w
                 $p = crypt($p,$row[1]);
 
                 if($p == $row[1]){
-                    ?>
-                    <script >
-                    window.location.href ="recovery.php";
-
-                    </script>
-                    <?php
-                  
+                    header("Location:home.php");
                     $_SESSION["email"] = $row[0];
                     $temp=1;
                     break;  
@@ -282,66 +257,6 @@ if(empty($errors)){
 }
 
         }
-        
-        
-        else if(isset($_POST["recoveryBtn"])){
-            include("Includes/create.php");
-            $email = (string)$_POST["emailField"];
-            $newPass =(string)$_POST["passwordField"];
-
-            $errors =errors($email,$password);
-    
-if(empty($errors)){
-    ?>
-    <script type="text/JavaScript">
-    (function (){
-    
-    document.getElementById("passwordField").style.border = "none";
-    document.getElementById("emailField").style.border = "none";
-
-    
-    }());
-
-    </script>
-    <?php  
-    
-    $query= createAccount($fName,$lName,$email,$password);
-    $result = mysqli_query($conn,$query);
-    if(!$result){
-        ?>
-        <script>
-        alert('Some error occurred ...try again..')
-        </script>
-        <?php          
-           }
-        
-}else{
-    if (in_array("password", $errors)){
-        ?>
-    <script type="text/JavaScript">
-    (function (){
-    
-    document.getElementById("passwordField").style.border = "thin solid red";
-    
-    }());
-    </script>
-    <?php  
-    }if (in_array("email", $errors)){
-        ?>
-    <script type="text/JavaScript">
-    (function (){
-    
-    document.getElementById("emailField").style.border = "thin solid red";
-    
-    }());
-    </script>
-    <?php  
-    }
-    
-}
-
-        }
-
         ?>
 
 <?php include("Includes/footer.php")?>

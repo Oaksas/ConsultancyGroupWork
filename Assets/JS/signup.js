@@ -32,7 +32,3 @@ recovery.style.display = "block";
 
 
 }
-
-function errFunction(){
-    alert("worked")
-}

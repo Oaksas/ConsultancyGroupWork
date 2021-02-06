@@ -5,7 +5,7 @@ function createAccount($fname,$lname,$email,$pass){
     $existingHash =substr($pass,0,21);
 
     global $conn;
-$query = "INSERT INTO userInfo(FIRSTNAME,LASTNAME,EMAIL,PASSWORD) VALUES('{$fname}','{$lname}','{$email}','{$pass}')";
+$query = "INSERT INTO users(FIRSTNAME,LASTNAME,EMAIL,PASSWORD,existingHash) VALUES('{$fname}','{$lname}','{$email}','{$pass}','{$existingHash}')";
 return $query;
 }
 function password_encrypt($password){
@@ -41,7 +41,7 @@ function errors($email,$password){
 
 
 
-    $query = "SELECT EMAIL From userInfo";
+    $query = "SELECT EMAIL From users";
     $result = mysqli_query($conn,$query);
     while($row = mysqli_fetch_row($result)){
     if($row[0] == $email){
@@ -59,6 +59,52 @@ if(strlen($password)<5){
 }
 return $errors;
 }
+function errorsR($password,$passConfirm){
+
+    $errors = array();
+    $count = 0;
+    $userId;
+    global $conn;
+ 
+ 
+ 
+     $query = "SELECT id,userName,eMail,sQuestion,sAnswer From users";
+     $result = mysqli_query($conn,$query);
+     while($row = mysqli_fetch_row($result)){
+     if($row[1] == $username && $row[2] == $email && $row[3] == $sQue && $row[4] == $sAns){
+         $userId = $row[0];
+ 
+       
+     }
+     
+     
+ }
+ 
+ 
+ if(!isset($userId)){        
+     $error = "Incorrect Information...";
+     $errors[$count] =  mysqli_real_escape_string($conn,$error);
+     $count++;
+ }
+ if(strlen($password)<5){
+     $error = "Password is too short..";
+     $errors[$count] =  mysqli_real_escape_string($conn,$error);
+     $count++;
+ }
+ if($password != $passConfirm){
+     $error = "Password don't match";
+     $errors[$count] =  mysqli_real_escape_string($conn,$error);
+     $count++;
+ }
+ 
+ return $errors;
+   
+ }
+ 
+ 
+
+
+
 
 function allMember(){
     global $conn;
