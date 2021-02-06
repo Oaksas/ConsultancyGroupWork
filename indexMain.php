@@ -98,7 +98,7 @@ style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-w
 <div class="row justify-content-center" >
     
     <div class="col-md-6 col-sm-12 ml-3 mb-4">
-     <a href="" class="text-primary" id="recovery" >Don't remember your password?</a>
+     <a href="" class="text-primary" name = "recoverBtn" id="recovery">Don't remember your password?</a>
     </div>
   
 </div>
@@ -126,13 +126,7 @@ style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-w
     </div>
   
 </div>
-<div class="row justify-content-center" >
-    
-    <div class="col-md-6  mb-3">
-        <button type="submit" class="btn btn-primary btn-lg btn-block" style="display: none;" name = "recover" id="recoveryBtn">Recover </button>
-    </div>
-  
-</div>
+
 
 
 </form>
@@ -284,63 +278,7 @@ if(empty($errors)){
         }
         
         
-        else if(isset($_POST["recoveryBtn"])){
-            include("Includes/create.php");
-            $email = (string)$_POST["emailField"];
-            $newPass =(string)$_POST["passwordField"];
-
-            $errors =errors($email,$password);
     
-if(empty($errors)){
-    ?>
-    <script type="text/JavaScript">
-    (function (){
-    
-    document.getElementById("passwordField").style.border = "none";
-    document.getElementById("emailField").style.border = "none";
-
-    
-    }());
-
-    </script>
-    <?php  
-    
-    $query= createAccount($fName,$lName,$email,$password);
-    $result = mysqli_query($conn,$query);
-    if(!$result){
-        ?>
-        <script>
-        alert('Some error occurred ...try again..')
-        </script>
-        <?php          
-           }
-        
-}else{
-    if (in_array("password", $errors)){
-        ?>
-    <script type="text/JavaScript">
-    (function (){
-    
-    document.getElementById("passwordField").style.border = "thin solid red";
-    
-    }());
-    </script>
-    <?php  
-    }if (in_array("email", $errors)){
-        ?>
-    <script type="text/JavaScript">
-    (function (){
-    
-    document.getElementById("emailField").style.border = "thin solid red";
-    
-    }());
-    </script>
-    <?php  
-    }
-    
-}
-
-        }
 
         ?>
 

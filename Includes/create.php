@@ -59,7 +59,7 @@ if(strlen($password)<5){
 }
 return $errors;
 }
-function errorsR($password,$passConfirm){
+function errorsR($email,$password){
 
     $errors = array();
     $count = 0;
@@ -68,19 +68,16 @@ function errorsR($password,$passConfirm){
  
  
  
-     $query = "SELECT id,userName,eMail,sQuestion,sAnswer From users";
+     $query = "SELECT eMail From users";
      $result = mysqli_query($conn,$query);
      while($row = mysqli_fetch_row($result)){
-     if($row[1] == $username && $row[2] == $email && $row[3] == $sQue && $row[4] == $sAns){
+     if($row[0] == $email){
          $userId = $row[0];
- 
-       
+      
      }
-     
-     
+   
  }
- 
- 
+
  if(!isset($userId)){        
      $error = "Incorrect Information...";
      $errors[$count] =  mysqli_real_escape_string($conn,$error);
