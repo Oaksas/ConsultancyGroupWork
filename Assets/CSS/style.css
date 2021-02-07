@@ -1,8 +1,13 @@
 /* for the drop downs */
 
 /*  univerity drop down */
+
 .menu-area{
     position: static;
+}
+#AAU{
+    background-image: url("../Images/AddisAbabaUniversity.jpeg");
+    background-size: cover;
 }
 .drop-down-links{
     position: absolute;
