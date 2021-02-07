@@ -5,10 +5,21 @@
 .menu-area{
     position: static;
 }
+
 #AAU{
     background-image: url("../Images/AddisAbabaUniversity.jpeg");
     background-size: cover;
 }
+
+.panel-default>.panel-heading a[aria-expanded="true"]:after {
+    content: "\2212";
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+  
+
+
+
 .drop-down-links{
     position: absolute;
     margin-left: 10rem;
@@ -99,6 +110,7 @@
 }
 .container_one{
     background-color:#f4f6f8;
+    border-radius: 20px;
 }
 .pra{
     visibility: hidden;
@@ -107,6 +119,10 @@
 /* for the footer */
 .footer{
     margin-bottom: -999px; 
+}
+a{
+    text-decoration: none;
+
 }
 #email{
     text-decoration: none;
