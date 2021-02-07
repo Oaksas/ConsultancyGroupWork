@@ -1,0 +1,121 @@
+/* for the drop downs */
+
+/*  univerity drop down */
+.menu-area{
+    position: static;
+}
+.drop-down-links{
+    position: absolute;
+    margin-left: 10rem;
+    background-color: #f4f6f8;
+    font-size: 0.9rem;
+    font-family: 'Times New Roman', Times, serif
+}
+/* ellipsis */
+
+#loginBtn:hover{
+    background-color:rgb(167, 165, 159);
+    border: none;
+}
+
+
+.dropdown-toggle::after {
+    border: none!important;
+    font-family: "Font Awesome 5 Free"; font-weight: 400; content: " ᨆ";
+    vertical-align: 0; /* to center vertically */
+  }
+
+/* for the nav part */
+.dropdown:hover>.dropdown-menu{
+    display: block;
+  }
+.drop-down-links1{
+    background-color: #f4f6f8;
+}
+.drop-down-links1 a{
+    color: #474343;
+    font-size: 0.9rem;
+    font-family: 'Times New Roman', Times, serif
+}
+.drop-down-links1 a:hover{
+     color:#000000;
+}
+.drop-down-links a{
+    color: #474343;
+    font-size: 0.9rem;
+    font-family: 'Times New Roman', Times, serif
+}
+.drop-down-links a:hover{
+     color:#000000;
+}
+/* for the drop down pages and links */
+.drop-down-page a{
+    text-decoration: none;
+    color: #757272 !important;
+}
+.drop-down-page a:hover{
+    text-decoration: none;
+    color:#000000 !important;
+}
+.drop-header{
+    color: #000000;
+}
+
+#learnHow:hover{
+    color: #9c81c7 !important;
+}
+
+
+
+/* #card1:hover{
+    color: rgb(156, 129, 199) !important;
+} */
+.card{
+    background-color:#f4f6f8;
+}
+
+.inner-cards{
+    background-color: #ffffff;
+}
+#img1{
+    width: 40px;
+    height: 30px;
+}
+.addis_card{
+    font-family: 'Source Code Pro', monospace;
+    color: rgb(66, 42, 71) !important;
+}
+.marks{
+    font-family: 'Source Serif Pro', serif;
+}
+.try{
+    background-color: #fff;
+    margin-left: 110px !important;
+}
+.container_one{
+    background-color:#f4f6f8;
+}
+.pra{
+    visibility: hidden;
+}
+
+/* for the footer */
+.footer{
+    margin-bottom: -999px; 
+}
+#email{
+    text-decoration: none;
+    color: #adaba1;
+}
+
+.footer_link{
+    font-size: 0.9rem;
+}
+.footer_link a{
+    text-decoration: none;
+    color: #e7f0e7 !important;
+}
+.footer_header{
+    color: rgb(167, 165, 159);
+    font-size: 1rem;
+}
