@@ -1,10 +1,33 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Hammersmith+One&display=swap');
+
 /* for the drop downs */
 
 /*  univerity drop down */
+body{
 
+    margin: 0;
+    padding: 0;
+    font-family: 'Hammersmith One', sans-serif;
+
+
+}
+.navbar ul li{
+
+padding-right: 20px;
+padding-bottom: 0;
+}
 .menu-area{
     position: static;
+    font-family: 'Hammersmith One', sans-serif;
+
 }
+
+#topUi li{
+    background-color: rebeccapurple;
+}
+
+
 
 #AAU{
     background-image: url("../Images/AddisAbabaUniversity.jpeg");
@@ -29,17 +52,36 @@
 }
 /* ellipsis */
 
-#loginBtn:hover{
-    background-color:rgb(167, 165, 159);
-    border: none;
-}
 
+#logoinBtn{
+    width: min-content;
+
+}
+#loginBtn:hover{
+    border: none;
+    width: max-content;
+
+}
+#signupBtn:hover{
+    color:black;
+    background-color: white;
+}
+.middleSizedFonts{
+    font-size: 22px;
+}
 
 .dropdown-toggle::after {
     border: none!important;
     font-family: "Font Awesome 5 Free"; font-weight: 400; content: " ᨆ";
     vertical-align: 0; /* to center vertically */
   }
+#ellipsis::after {
+    border: none!important;
+    font-family: "Font Awesome 5 Free"; font-weight: 400; content: " ";
+    vertical-align: 0; /* to center vertically */
+  }
+
+
 
 /* for the nav part */
 .dropdown:hover>.dropdown-menu{
@@ -77,9 +119,6 @@
     color: #000000;
 }
 
-#learnHow:hover{
-    color: #9c81c7 !important;
-}
 
 
 
@@ -93,10 +132,7 @@
 .inner-cards{
     background-color: #ffffff;
 }
-#img1{
-    width: 40px;
-    height: 30px;
-}
+
 .addis_card{
     font-family: 'Source Code Pro', monospace;
     color: rgb(66, 42, 71) !important;
