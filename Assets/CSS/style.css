@@ -1,5 +1,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Hammersmith+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@100&display=swap');
 
 /* for the drop downs */
 
@@ -182,7 +183,6 @@ a{
 
 
 
-
 /* the blog */
 
 
@@ -289,4 +289,13 @@ iframe:hover{
 }
 .hide-content{
     background-color: rgb(235, 231, 231);
+}
+/*CollegeList*/
+
+.img-fluid {
+    max-height: 200px;
+}
+.header{
+    font-family: 'Barlow', sans-serif;
+    font-weight: 600;
 }
