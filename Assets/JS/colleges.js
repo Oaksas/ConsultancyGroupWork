@@ -1,4 +1,6 @@
 let DB;
+const univList = document.querySelector('.collection'); //The UL
+
 document.addEventListener('DOMContentLoaded', () => {
 
     let univDB = indexedDB.open('univDB', 1);
@@ -32,14 +34,20 @@ document.addEventListener('DOMContentLoaded', () => {
 function addToDb(){
       
     var univNameList = ["Addis Ababa University","Jimma University","Bahir Dar University","Hawassa University","Arba Minch University",
-    "University of Gondar","Adama Science and Technology University"
+    "University of Gondar","Adama Science and Technology University","Haramaya University","Ambo University","Debre Berhan University"
  ]
     var acronymList = ["AAU","JU","BDU","HWU","AMU",
-    "UoG","ASTU"]
+    "UoG","ASTU","HRU","AU","DBU"]
+
+
+
     var foundedDateList = ["1950","1983","2001","1976","1986",
-    "1954","1993"]
+    "1954","1993","1954","2011","2007"]
+
+
     var mottoList = ["Seek Wisdom, Elevate Your Intellect and Serve Humanity","We are In the Community"," "," ","We grow in the esteem of future generation",
-    "","We are dedicated to innovative knowledge"]
+    "","We are dedicated to innovative knowledge","Building the Basis for Development"," "," ",
+]
     
     univNameList.forEach((element,index) => {
             console.log(index);
@@ -120,6 +128,57 @@ objectStore.openCursor().onsuccess = function(e) {
 
         console.log('Database ready and fields created!');
     }
+
+function displayTaskList() {
+        // clear the previous task list
+        while (univList.firstChild) {
+            taskList.removeChild(taskList.firstChild);
+        }
+
+        // create the object store
+        let objectStore = DB.transaction('univLists').objectStore('univLists');
+
+        objectStore.openCursor().onsuccess = function(e) {
+            // assign the current cursor
+            let cursor = e.target.result;
+
+            if (cursor) {
+
+                add(cursor.value.id, cursor.value.univName);
+                cursor.continue();
+            }
+        }
+    }
+
+
+    function add(id,univName){
+
+        // Create an li element when the user adds a task 
+        const li = document.createElement('li');
+        //add Attribute for delete 
+        li.setAttribute('data-task-id',id);
+        // Adding a class
+        li.className = 'collection-item';
+        // Create text node and append it 
+        li.appendChild(document.createTextNode(univName));
+      
+
+        // Create new element for the link 
+        const link = document.createElement('a');
+        // Add class and the x marker for a 
+        link.className = 'delete-item secondary-content';
+        link.innerHTML = `
+         <i class="fa fa-remove"></i>
+        &nbsp;
+        <a href="./edit.html?id=${id}"><i class="fa fa-edit"></i> </a>
+        `;
+        // Append link to li
+        li.appendChild(link);
+        // Append to UL 
+        univList.appendChild(li);
+        
+    }
+
 
 });
 
