@@ -31,10 +31,15 @@ document.addEventListener('DOMContentLoaded', () => {
  
 function addToDb(){
       
-    var univNameList = ["Addis Ababa University","Jimma University","Bahir Dar University","Hawassa University", ]
-    var acronymList = ["AAU","JU","BDU"]
-    var foundedDateList = ["1950","1983","2001"]
-    var mottoList = ["Seek Wisdom, Elevate Your Intellect and Serve Humanity","We are In the Community"," "]
+    var univNameList = ["Addis Ababa University","Jimma University","Bahir Dar University","Hawassa University","Arba Minch University",
+    "University of Gondar","Adama Science and Technology University"
+ ]
+    var acronymList = ["AAU","JU","BDU","HWU","AMU",
+    "UoG","ASTU"]
+    var foundedDateList = ["1950","1983","2001","1976","1986",
+    "1954","1993"]
+    var mottoList = ["Seek Wisdom, Elevate Your Intellect and Serve Humanity","We are In the Community"," "," ","We grow in the esteem of future generation",
+    "","We are dedicated to innovative knowledge"]
     
     univNameList.forEach((element,index) => {
             console.log(index);
