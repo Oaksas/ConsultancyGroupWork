@@ -1,5 +1,8 @@
 let DB;
-const univList = document.querySelector('.collection'); //The UL
+const listTop = document.querySelector('.collection'); //The UL
+const listPublic = document.querySelector('.collectionPublic'); //The UL
+const listPrivate = document.querySelector('.collectionPrivate'); //The UL
+
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -14,39 +17,42 @@ document.addEventListener('DOMContentLoaded', () => {
         // console.log('Database Ready');
 
         // save the result
-
-
         DB = univDB.result;
+
+
+        displayCollegeListPublic();
+        displayCollegeListPrivate();
+        displayCollegeListTop();
         let addUniv = {
             univName:"" ,
             acronym:"",
             foundedDate:"",
-            motto:""
+            motto:"",
+            publicness:""
      
         }
 
-        // var  Name;
-        // var acronym;
-        // var foundedDate;
-        // var motto 
-   
- 
+     
 function addToDb(){
       
     var univNameList = ["Addis Ababa University","Jimma University","Bahir Dar University","Hawassa University","Arba Minch University",
-    "University of Gondar","Adama Science and Technology University","Haramaya University","Ambo University","Debre Berhan University"
+    "University of Gondar","Adama Science and Technology University","Haramaya University","Ambo University","Debre Berhan University","Rift Valley University",
+    "Unity University","Mekelle Institute of Technology",
  ]
     var acronymList = ["AAU","JU","BDU","HWU","AMU",
-    "UoG","ASTU","HRU","AU","DBU"]
+    "UoG","ASTU","HRU","AU","DBU","	RVU","UU","MIT"]
 
 
 
     var foundedDateList = ["1950","1983","2001","1976","1986",
-    "1954","1993","1954","2011","2007"]
+    "1954","1993","1954","2011","2007","2000","1991","2002"]
 
 
     var mottoList = ["Seek Wisdom, Elevate Your Intellect and Serve Humanity","We are In the Community"," "," ","We grow in the esteem of future generation",
-    "","We are dedicated to innovative knowledge","Building the Basis for Development"," "," ",
+    " ","We are dedicated to innovative knowledge","Building the Basis for Development"," "," ","Excellence for Development","Creating Opportunity through Education",
+
+]
+var publicnessList = ["Public","Public","Public ","Public ","Public","Public","Public","Public"," Public","Public ","Private","Private","Private"
 ]
     
     univNameList.forEach((element,index) => {
@@ -56,6 +62,7 @@ function addToDb(){
         addUniv.acronym=acronymList[index];
         addUniv.foundedDate= foundedDateList[index];
         addUniv.motto = mottoList[index];
+        addUniv.publicness = publicnessList[index];
     
           
             let request = objectStore.add(addUniv);
@@ -121,6 +128,8 @@ objectStore.openCursor().onsuccess = function(e) {
         objectStore.createIndex('acronym', 'acronym', { unique: false });
         objectStore.createIndex('foundedDate', 'foundedDate', { unique: false });
         objectStore.createIndex('motto', 'motto', { unique: false });
+        objectStore.createIndex('publicness', 'publicness', { unique: false });
+
 
 
 
@@ -129,11 +138,9 @@ objectStore.openCursor().onsuccess = function(e) {
         console.log('Database ready and fields created!');
     }
 
-function displayTaskList() {
+function displayCollegeListTop() {
         // clear the previous task list
-        while (univList.firstChild) {
-            taskList.removeChild(taskList.firstChild);
-        }
+       
 
         // create the object store
         let objectStore = DB.transaction('univLists').objectStore('univLists');
@@ -144,38 +151,92 @@ function displayTaskList() {
 
             if (cursor) {
 
-                add(cursor.value.id, cursor.value.univName);
+                add(cursor.value.id, cursor.value.univName,cursor.value.acronym,listTop);
+                cursor.continue();
+            }
+        }
+    }
+
+    function displayCollegeListPublic() {
+        // clear the previous task list
+       
+
+        // create the object store
+        let objectStore = DB.transaction('univLists').objectStore('univLists');
+
+        objectStore.openCursor().onsuccess = function(e) {
+            // assign the current cursor
+            let cursor = e.target.result;
+
+            if (cursor) {
+               if(cursor.value.publicness.trim() === "Public"){
+                add(cursor.value.id, cursor.value.univName,cursor.value.acronym,listPublic);
+               }
                 cursor.continue();
             }
         }
     }
 
 
-    function add(id,univName){
+    function displayCollegeListPrivate() {
+        // clear the previous task list
+       
 
-        // Create an li element when the user adds a task 
-        const li = document.createElement('li');
-        //add Attribute for delete 
-        li.setAttribute('data-task-id',id);
-        // Adding a class
-        li.className = 'collection-item';
-        // Create text node and append it 
-        li.appendChild(document.createTextNode(univName));
-      
+        // create the object store
+        let objectStore = DB.transaction('univLists').objectStore('univLists');
 
-        // Create new element for the link 
-        const link = document.createElement('a');
+        objectStore.openCursor().onsuccess = function(e) {
+            // assign the current cursor
+            let cursor = e.target.result;
+
+            if (cursor) {
+               if(cursor.value.publicness.trim() === "Private"){
+                add(cursor.value.id, cursor.value.univName,cursor.value.acronym,listPrivate);
+               }
+                cursor.continue();
+            }
+        }
+    }
+
+
+
+
+    function add(id,univName,arg,list){
+
+        const divIdRow = document.createElement('div');
+        const divIdCol1 = document.createElement('div');
+        const divIdCol2 = document.createElement('div');
+        const divIdCol3 = document.createElement('div');
+        
+
+
         // Add class and the x marker for a 
-        link.className = 'delete-item secondary-content';
-        link.innerHTML = `
-         <i class="fa fa-remove"></i>
-        &nbsp;
-        <a href="./edit.html?id=${id}"><i class="fa fa-edit"></i> </a>
+        divIdRow.className = 'row';
+        divIdCol1.className = 'col-2';
+        divIdCol2.className = 'col-8';
+        divIdCol3.className = 'col-2';
+
+    
+        divIdRow.setAttribute('data-task-id',id);
+
+        
+
+        divIdCol1.innerHTML = id;
+        divIdCol2.innerHTML = `
+         
+        <a href="./edit.html?id=${univName}">${univName} </a>
+
         `;
-        // Append link to li
-        li.appendChild(link);
-        // Append to UL 
-        univList.appendChild(li);
+        divIdCol3.innerHTML = arg;
+    
+        divIdRow.appendChild(divIdCol1);
+        divIdRow.appendChild(divIdCol2);
+        divIdRow.appendChild(divIdCol3);
+
+        list.appendChild(divIdRow);
+
+
+      
         
     }
 
