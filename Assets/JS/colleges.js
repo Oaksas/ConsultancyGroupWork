@@ -3,6 +3,7 @@ const listTop = document.querySelector('.collection'); //The UL
 const listPublic = document.querySelector('.collectionPublic'); //The UL
 const listPrivate = document.querySelector('.collectionPrivate'); //The UL
 const listAge = document.querySelector('.collectionAge'); //The UL
+const listTown = document.querySelector('.collectionTown'); //The UL
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -21,6 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
         DB = univDB.result;
 
 
+        displayCollegeListTown();
+        displayCollegeListAge();
         displayCollegeListPublic();
         displayCollegeListPrivate();
         displayCollegeListTop();
@@ -30,7 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
             foundedDate:"",
             motto:"",
             publicness:"",
-            town :""
+            town :"",
+            region:""
      
         }
 
@@ -56,9 +60,10 @@ function addToDb(){
 ]
 var publicnessList = ["Public","Public","Public ","Public ","Public","Public","Public","Public"," Public","Public ","Private","Private","Private"
 ]
-var townList = ["Addis Ababa","Jimma","Bahir Dat ","Hawassa ","Arba Minch","Gondar","Adama","Haramaya"," Ambo","Debre Birhan ","Addis Ababa","Addis Ababa","Mekelle"
+var townList = ["Addis Ababa","Jimma","Bahir Dar ","Hawassa ","Arba Minch","Gondar","Adama","Haramaya"," Ambo","Debre Birhan ","Addis Ababa","Addis Ababa","Mekelle"
 ]
-    
+var townList = ["Addis Ababa","Oromia","Amhara","SNNPR ","SNNPR","Amhara","Oromia","Oromia"," Oromia","Amhara ","Addis Ababa","Addis Ababa","Tigray"
+]   
     univNameList.forEach((element,index) => {
             console.log(index);
         
@@ -68,6 +73,7 @@ var townList = ["Addis Ababa","Jimma","Bahir Dat ","Hawassa ","Arba Minch","Gond
         addUniv.motto = mottoList[index];
         addUniv.publicness = publicnessList[index];
         addUniv.town = townList[index];
+        addUniv.region = regionList[index];
     
           
             let request = objectStore.add(addUniv);
@@ -88,7 +94,7 @@ var townList = ["Addis Ababa","Jimma","Bahir Dat ","Hawassa ","Arba Minch","Gond
         // Insert the object into the database 
         let transaction = DB.transaction(['univLists'], 'readwrite');
         let objectStore = transaction.objectStore('univLists');
-objectStore.openCursor().onsuccess = function(e) {
+        objectStore.openCursor().onsuccess = function(e) {
     if(e.target.result === null){
         addToDb();
     } 
@@ -135,6 +141,7 @@ objectStore.openCursor().onsuccess = function(e) {
         objectStore.createIndex('motto', 'motto', { unique: false });
         objectStore.createIndex('publicness', 'publicness', { unique: false });
         objectStore.createIndex('town', 'town', { unique: false });
+        objectStore.createIndex('region', 'region', { unique: false });
 
 
 
@@ -176,7 +183,27 @@ function displayCollegeListTop() {
 
             if (cursor) {
                 
-                add(cursor.value.id, cursor.value.univName,cursor.value.acronym,listAge);
+                add(cursor.value.id, cursor.value.univName,cursor.value.foundedDate,listAge);
+                cursor.continue();
+            }
+        }
+    }
+
+
+    function displayCollegeListTown() {
+        // clear the previous task list
+       
+
+        // create the object store
+        let objectStore = DB.transaction('univLists').objectStore('univLists');
+
+        objectStore.index('town').openCursor().onsuccess = function(e) {
+            // assign the current cursor
+            let cursor = e.target.result;
+
+            if (cursor) {
+                
+                add(cursor.value.id, cursor.value.univName,cursor.value.town,listTown);
                 cursor.continue();
             }
         }
