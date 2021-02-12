@@ -82,11 +82,7 @@ padding-bottom: 0;
     vertical-align: 0; /* to center vertically */
   }
 
-  #backgroundCalculate{
-      background-image: url("../Images/back3.jpg");
-
  
-  }
 
 
 
@@ -188,6 +184,9 @@ a{
 
 
 /* the blog */
+
+
+
 .univ-container{
     background-color: rgb(241, 239, 239);
 }
