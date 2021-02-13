@@ -11,6 +11,16 @@ const address = document.getElementById('address');
 const tel = document.getElementById('tel'); 
 const fax = document.getElementById('fax'); 
 
+
+const financeView = document.getElementById('ufinance'); 
+const libraryView = document.getElementById('ulib'); 
+const sportView = document.getElementById('usport');
+const houseView = document.getElementById('uhouse');
+
+
+const enrollmentView = document.getElementById('unenroll'); 
+const stuffView = document.getElementById('unstuff'); 
+const controlView = document.getElementById('uncontrol'); 
  
 const overviewView = document.getElementById('overview'); 
 
@@ -55,14 +65,15 @@ document.addEventListener('DOMContentLoaded', () => {
             if (cursor) {
                if(cursor.value.univName.trim() === uName.trim()){
                 
-                add(cursor.value.univName,cursor.value.overview,cursor.value.acronym,cursor.value.foundedDate,cursor.value.motto,cursor.value.website, cursor.value.region, cursor.value.town,cursor.value.tel, cursor.value.fax);
+                add(cursor.value.univName,cursor.value.overview,cursor.value.acronym,cursor.value.foundedDate,cursor.value.motto,cursor.value.website, cursor.value.region, cursor.value.town,cursor.value.tel, cursor.value.fax, cursor.value.enrollment, cursor.value.stuff,
+                     cursor.value.publicness, cursor.value.library, cursor.value.housing, cursor.value.sportFacility, cursor.value.financialAid);
                }
                else{console.log("Nan")}
                 cursor.continue();
             }
         }
     }
-    function add(name,overview,acronym,foundedDate,motto,website,add1, add2,telAdd,faxAdd){
+    function add(name,overview,acronym,foundedDate,motto,website,add1, add2,telAdd,faxAdd, enroll,stuff,control,lib,house,sport,finance){
 
         
             unname[0].innerHTML = name;
@@ -73,10 +84,23 @@ overviewView.innerHTML = overview
 unacr.innerHTML = acronym
 unfounded.innerHTML = foundedDate
 unmotto.innerHTML = motto
-unweb.innerHTML = website
+unweb.innerHTML =  `
+         
+<a href="${website}" target="_BLANK">${website} </a>
+
+`;
+
 address.innerHTML = add2+", "+add1+" ,Ethiopia"
 tel.innerHTML = telAdd
 fax.innerHTML = faxAdd
+enrollmentView.innerHTML = enroll
+stuffView.innerHTML = stuff
+controlView.innerHTML = control
+
+libraryView.innerHTML = lib
+houseView.innerHTML = house
+sportView.innerHTML = sport
+financeView.innerHTML = finance
 
 
 

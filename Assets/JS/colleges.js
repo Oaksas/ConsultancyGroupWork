@@ -39,6 +39,14 @@ document.addEventListener('DOMContentLoaded', () => {
             website:"",
             tel :"",
             fax :"",
+            enrollment:"",
+            stuff :"",
+            library:"",
+            housing:"",
+            sportFacility:"",
+            financialAid:"",
+
+
             
      
         }
@@ -95,6 +103,22 @@ var telList = ["+251 (11) 123 9800","+251 (471) 112 202","+251 (58) 220 0137","+
 ]   
 var faxList = ["+251 (11) 123 9729","+251 (471) 111 450","+251 (58) 220 0137","+251 (46) 220 5421 ","+251 (46) 881 4964","+251 (58) 114 1240","+251 (221) 100 032","+251 (25) 553 0325"," ","+251 (11) 681 2065 ","+251 (11) 470 9985"," ","	+251 (34) 440 9988"
 ]   
+var enrollmentList = ["Over 45,000","35,000-39,999"," Not reported","20,000-24,999 ","30,000-34,999"," 10,000-14,999","20,000-24,999"," 30,000-34,999"," Not reported","Not reported ","over-45,000","5,000-5,999"," Not reported"
+]   
+var stuffList = ["2,500-2,999","1,000-1,499"," Not reported","4,000-4,499 ","2,000-2,499"," 2,000-2,499","2,000-2,499","1,500-1,999"," Not reported","Not reported "," over-5,000","Not reported"," Not reported"
+]
+
+
+
+var libraryList =       ["Yes","Yes"," Not reported","Yes ","Yes"," Yes","Yes","Yes"," Yes","Yes  ","Yes ","Not reported"," Not reported"
+]
+
+var housingList =      ["Yes","Yes"," Not reported","Yes ","Yes"," Yes","Yes","Yes"," Not reported","Not reported "," Not reported","Not reported"," Not reported"
+]
+var sportList =        ["Yes","Yes"," Not reported","Yes","Yes"," Yes","Yes","Yes"," Not reported","Not reported "," Yes","Not reported"," Not reported"
+]
+var financialAidList = ["Yes","Not reported"," Not reported","Yes","Yes"," Yes","Yes","Not reported"," Not reported","Not reported "," Yes","Not reported"," Not reported"
+]
 
 
 
@@ -113,7 +137,12 @@ var faxList = ["+251 (11) 123 9729","+251 (471) 111 450","+251 (58) 220 0137","+
         addUniv.website = websiteList[index];
         addUniv.tel = telList[index];
         addUniv.fax = faxList[index];
-    
+        addUniv.enrollment = enrollmentList[index];
+        addUniv.stuff = stuffList[index];
+        addUniv.library = libraryList[index];
+        addUniv.housing = housingList[index];
+        addUniv.sportFacility = sportList[index];
+        addUniv.financialAid = financialAidList[index];
           
             let request = objectStore.add(addUniv);
             request.onsuccess = () => {
