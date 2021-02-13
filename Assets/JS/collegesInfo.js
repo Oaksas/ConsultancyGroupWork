@@ -41,6 +41,10 @@ const urlParams = new URLSearchParams(window.location.search);
 const uName = urlParams.get('univName').trim();
 
 document.addEventListener('DOMContentLoaded', () => {
+    var path = "Assets/Images/Covers/";
+
+    document.getElementById("cover").src = path+uName+".jpg";
+
     // create the database
     let univDB = indexedDB.open('univDB', 1);
 
