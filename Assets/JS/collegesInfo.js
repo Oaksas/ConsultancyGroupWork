@@ -21,7 +21,18 @@ const houseView = document.getElementById('uhouse');
 const enrollmentView = document.getElementById('unenroll'); 
 const stuffView = document.getElementById('unstuff'); 
 const controlView = document.getElementById('uncontrol'); 
+ //Social Media Section
+ const facebookView = document.getElementById('ufacebook');
+
+
+ const twitterView = document.getElementById('utwitter'); 
+ const linkedlnView = document.getElementById('ulinkedln'); 
+ const youtubeView = document.getElementById('uyoutube'); 
  
+
+
+
+
 const overviewView = document.getElementById('overview'); 
 
 
@@ -65,15 +76,19 @@ document.addEventListener('DOMContentLoaded', () => {
             if (cursor) {
                if(cursor.value.univName.trim() === uName.trim()){
                 
-                add(cursor.value.univName,cursor.value.overview,cursor.value.acronym,cursor.value.foundedDate,cursor.value.motto,cursor.value.website, cursor.value.region, cursor.value.town,cursor.value.tel, cursor.value.fax, cursor.value.enrollment, cursor.value.stuff,
-                     cursor.value.publicness, cursor.value.library, cursor.value.housing, cursor.value.sportFacility, cursor.value.financialAid);
+                add(cursor.value.univName,cursor.value.overview,cursor.value.acronym,cursor.value.foundedDate,cursor.value.motto,cursor.value.website,
+                     cursor.value.region, cursor.value.town,cursor.value.tel, cursor.value.fax, cursor.value.enrollment, cursor.value.stuff,
+                     cursor.value.publicness, cursor.value.library, cursor.value.housing, cursor.value.sportFacility, cursor.value.financialAid,
+                     cursor.value.facebook, cursor.value.twitter, cursor.value.linkedln, cursor.value.youtube);
                }
                else{console.log("Nan")}
                 cursor.continue();
             }
         }
     }
-    function add(name,overview,acronym,foundedDate,motto,website,add1, add2,telAdd,faxAdd, enroll,stuff,control,lib,house,sport,finance){
+    function add(name,overview,acronym,foundedDate,motto,website,add1,
+         add2,telAdd,faxAdd, enroll,stuff,control,lib,house,sport,finance,
+         facebook,twitter,linkedln,youtube){
 
         
             unname[0].innerHTML = name;
@@ -84,11 +99,7 @@ overviewView.innerHTML = overview
 unacr.innerHTML = acronym
 unfounded.innerHTML = foundedDate
 unmotto.innerHTML = motto
-unweb.innerHTML =  `
-         
-<a href="${website}" target="_BLANK">${website} </a>
-
-`;
+unweb.innerHTML =  `<a href="${website}" target="_BLANK">${website} </a>`;
 
 address.innerHTML = add2+", "+add1+" ,Ethiopia"
 tel.innerHTML = telAdd
@@ -101,6 +112,15 @@ libraryView.innerHTML = lib
 houseView.innerHTML = house
 sportView.innerHTML = sport
 financeView.innerHTML = finance
+
+
+facebookView.innerHTML = `<a href="${name}" target="_BLANK">${facebook} </a>`;
+twitterView.innerHTML = `<a href="${name}" target="_BLANK">${twitter} </a>`;
+linkedlnView.innerHTML = `<a href="${name}" target="_BLANK">${linkedln} </a>`;
+youtubeView.innerHTML =   `<a href="${name}" target="_BLANK">${youtube} </a>`;
+
+
+
 
 
 

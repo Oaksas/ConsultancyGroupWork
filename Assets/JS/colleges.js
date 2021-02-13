@@ -45,6 +45,10 @@ document.addEventListener('DOMContentLoaded', () => {
             housing:"",
             sportFacility:"",
             financialAid:"",
+            facebook:"",
+            twitter:"",
+            linkedln:"",
+            youtube:"",
 
 
             
@@ -120,7 +124,14 @@ var sportList =        ["Yes","Yes"," Not reported","Yes","Yes"," Yes","Yes","Ye
 var financialAidList = ["Yes","Not reported"," Not reported","Yes","Yes"," Yes","Yes","Not reported"," Not reported","Not reported "," Yes","Not reported"," Not reported"
 ]
 
-
+var facebookList = ["https://www.facebook.com/Addis-Ababa-University-496255483792611/","https://www.facebook.com/JimmaUniv/"," https://www.facebook.com/bduethiopia/","https://www.facebook.com/Hawassa.University/","https://www.facebook.com/ArbaMinchUniversityCCD/"," https://www.facebook.com/TheUniversityofGondar/","https://www.facebook.com/astu.edu.et/","https://www.facebook.com/HRMUNIV/"," ","https://www.facebook.com/dbu.edu.et/ "," https://www.facebook.com/riftvalleyuniversity/","https://www.facebook.com/UNITY-University-855561114497854/"," https://www.facebook.com/MITethiopia/"
+]
+var twitterList = ["https://twitter.com/AddisAbabaUnive","https://twitter.com/JimmaUniv"," https://twitter.com/bdueduet","https://twitter.com/HawassaUniv","https://twitter.com/ArbaMinch_Univ"," "," ","https://twitter.com/haramayauniver4"," "," "," https://twitter.com/UniversityRv"," "," "
+]
+var linkedlnList = ["https://www.linkedin.com/school/addis-ababa-university/","https://www.linkedin.com/school/jimma-university/","https://www.linkedin.com/school/bahir-dar-university/","https://www.linkedin.com/company/hawassa-university/","https://www.linkedin.com/company/arba-minch-university/"," https://www.linkedin.com/school/university-of-gondar/","https://www.facebook.com/astu.edu.et/","https://www.linkedin.com/school/alemaya-university/"," "," ","  ","https://www.linkedin.com/school/unity-university/"," "
+]
+var youtubeList = [" ","https://www.youtube.com/channel/UCtyhlHBXkxzIsS20ZPd3vow"," https://www.youtube.com/channel/UCoI9V9JZpaCuajFX5aDsiNQ","https://www.youtube.com/channel/UCK7E_YvqrX1uQxe_xoY5GOA","https://www.linkedin.com/company/arba-minch-university/","  "," ","https://www.youtube.com/channel/UCd6Bb1Xc6FyycH0_DFmkxNQ"," https://www.youtube.com/channel/UCdCJRBKLPE_GaQzPozEOaig"," "," https://www.youtube.com/channel/UCITXUDdz0-fwJOroO8pWGFA"," "," "
+]
 
 
     univNameList.forEach((element,index) => {
@@ -143,6 +154,12 @@ var financialAidList = ["Yes","Not reported"," Not reported","Yes","Yes"," Yes",
         addUniv.housing = housingList[index];
         addUniv.sportFacility = sportList[index];
         addUniv.financialAid = financialAidList[index];
+
+       //Social Media Section
+       addUniv.facebook = facebookList[index]
+       addUniv.twitter = twitterList[index]
+       addUniv.linkedln = linkedlnList[index]
+       addUniv.youtube = youtubeList[index]
           
             let request = objectStore.add(addUniv);
             request.onsuccess = () => {
