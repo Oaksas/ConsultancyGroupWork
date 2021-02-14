@@ -14,6 +14,9 @@ document.addEventListener('DOMContentLoaded', () => {
     univDB.onerror = function() {
             console.log('There was an error');
         }
+
+  
+
         // if everything is fine, assign the result to the instance
         univDB.onsuccess = function() {
         // console.log('Database Ready');
@@ -326,6 +329,8 @@ var scienceCoursePost = ["Yes","Yes "," Yes"," ","Yes","Yes","Yes","Yes"," "," "
         // create an object store, 
         // keypath is going to be the Indexes
         let objectStore = db.createObjectStore('univLists', { keyPath: 'id', autoIncrement: true });
+        let objectStorePersonal = db.createObjectStore('personalList', { keyPath: 'id', autoIncrement: true });
+
 
         // createindex: 1) field name 2) keypath 3) options
         objectStore.createIndex('univName', 'univName', { unique: false });
@@ -337,7 +342,11 @@ var scienceCoursePost = ["Yes","Yes "," Yes"," ","Yes","Yes","Yes","Yes"," "," "
         objectStore.createIndex('region', 'region', { unique: false });
 
 
-
+    // createindex for univPersonalDB: 1) field name 2) keypath 3) options
+    objectStorePersonal.createIndex('univName', 'univName', { unique: false });
+    objectStorePersonal.createIndex('acronym', 'acronym', { unique: false });
+    objectStorePersonal.createIndex('town', 'town', { unique: false });
+    
 
 
 

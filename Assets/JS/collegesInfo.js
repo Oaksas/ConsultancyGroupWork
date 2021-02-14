@@ -1,4 +1,5 @@
 let DB;
+let rank;
 
 const unname = document.querySelectorAll('#unname');
 
@@ -28,7 +29,9 @@ const controlView = document.getElementById('uncontrol');
  const twitterView = document.getElementById('utwitter'); 
  const linkedlnView = document.getElementById('ulinkedln'); 
  const youtubeView = document.getElementById('uyoutube'); 
- 
+
+
+
 //Courses Section
 
 const artUnderView = document.getElementById('artUnderCheck'); 
@@ -51,13 +54,24 @@ const sciencePostView = document.getElementById('sciencePostCheck');
 
 
 const overviewView = document.getElementById('overview'); 
+const addBtn = document.getElementById('addToList'); 
 
 
 
 const urlParams = new URLSearchParams(window.location.search);
 const uName = urlParams.get('univName').trim();
 
+
 document.addEventListener('DOMContentLoaded', () => {
+    let addUniv = {
+        univName:"" ,
+        acronym:"",
+        rank:""
+    }
+
+
+
+
     var path = "Assets/Images/Covers/";
 
     document.getElementById("cover").src = path+uName+".jpg";
@@ -81,7 +95,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-   
+    addBtn.addEventListener('click',addToPersonalDB);
+
     
     function displayTask() {
         // clear the previous task list
@@ -96,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (cursor) {
                if(cursor.value.univName.trim() === uName.trim()){
-                
+                rank = cursor.value.id;
                 add(cursor.value.univName,cursor.value.overview,cursor.value.acronym,cursor.value.foundedDate,cursor.value.motto,cursor.value.website,
                      cursor.value.region, cursor.value.town,cursor.value.tel, cursor.value.fax, cursor.value.enrollment, cursor.value.stuff,
                      cursor.value.publicness, cursor.value.library, cursor.value.housing, cursor.value.sportFacility, cursor.value.financialAid,
@@ -173,8 +188,47 @@ sciencePostView.innerHTML = (sciencePost.trim() ==="Yes") ? `<i class="fas fa-ch
 
 
 }
+function addToPersonalDB(){
+      // Insert the object into the database 
+      let transaction = DB.transaction(['personalList'], 'readwrite');
+      let objectStorePersonal = transaction.objectStore('personalList');
+
+      objectStorePersonal.openCursor().onsuccess = function(e) {
+        addToDb();
+        let request = objectStorePersonal.add(addUniv);
+        request.onsuccess = () => {
+        console.log('New University added to personal DB');
+        } 
+    
+    } 
+     
+    transaction.oncomplete = () => {
+        console.log('New appointment added');
+     
 
 
+        
+    }
+    transaction.onerror = () => {
+        console.log('There was an error, try again!');
+    }
+
+
+    
+}
+
+function addToDb(){
+
+    addUniv.univName =uName;
+    addUniv.acronym = unacr.innerHTML;
+    addUniv.rank = rank;
+    
+
+
+    
+
+
+}
 
     
 
