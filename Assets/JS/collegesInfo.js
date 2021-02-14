@@ -29,8 +29,25 @@ const controlView = document.getElementById('uncontrol');
  const linkedlnView = document.getElementById('ulinkedln'); 
  const youtubeView = document.getElementById('uyoutube'); 
  
+//Courses Section
 
+const artUnderView = document.getElementById('artUnderCheck'); 
+const artPostView = document.getElementById('artPostCheck'); 
 
+const businessUnderView = document.getElementById('businessUnderCheck'); 
+const businessPostView = document.getElementById('businessPostCheck'); 
+
+const languageUnderView = document.getElementById('languageUnderCheck'); 
+const languagePostView = document.getElementById('languagePostCheck'); 
+
+const medicineUnderView = document.getElementById('medicineUnderCheck'); 
+const medicinePostView = document.getElementById('medicinePostCheck'); 
+
+const engineeringUnderView = document.getElementById('engineeringUnderCheck'); 
+const engineeringPostView = document.getElementById('engineeringPostCheck'); 
+
+const scienceUnderView = document.getElementById('scienceUnderCheck'); 
+const sciencePostView = document.getElementById('sciencePostCheck'); 
 
 
 const overviewView = document.getElementById('overview'); 
@@ -83,7 +100,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 add(cursor.value.univName,cursor.value.overview,cursor.value.acronym,cursor.value.foundedDate,cursor.value.motto,cursor.value.website,
                      cursor.value.region, cursor.value.town,cursor.value.tel, cursor.value.fax, cursor.value.enrollment, cursor.value.stuff,
                      cursor.value.publicness, cursor.value.library, cursor.value.housing, cursor.value.sportFacility, cursor.value.financialAid,
-                     cursor.value.facebook, cursor.value.twitter, cursor.value.linkedln, cursor.value.youtube);
+                     cursor.value.facebook, cursor.value.twitter, cursor.value.linkedln, cursor.value.youtube,cursor.value.artUnder,cursor.value.artPost,
+                     cursor.value.businessUnder,cursor.value.businessPost,cursor.value.languageUnder,cursor.value.languagePost,cursor.value.medicineUnder,
+                     cursor.value.medicinePost,cursor.value.engineeringUnder,cursor.value.engineeringPost,cursor.value.scienceUnder,cursor.value.sciencePost,);
                }
                else{console.log("Nan")}
                 cursor.continue();
@@ -92,7 +111,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     function add(name,overview,acronym,foundedDate,motto,website,add1,
          add2,telAdd,faxAdd, enroll,stuff,control,lib,house,sport,finance,
-         facebook,twitter,linkedln,youtube){
+         facebook,twitter,linkedln,youtube,artUnder,artPost,businessUnder,businessPost,languageUnder,languagePost,
+         medicineUnder,medicinePost,engineeringUnder,engineeringPost,scienceUnder,sciencePost){
 
         
             unname[0].innerHTML = name;
@@ -122,6 +142,30 @@ facebookView.innerHTML = `<a href="${name}" target="_BLANK">${facebook} </a>`;
 twitterView.innerHTML = `<a href="${name}" target="_BLANK">${twitter} </a>`;
 linkedlnView.innerHTML = `<a href="${name}" target="_BLANK">${linkedln} </a>`;
 youtubeView.innerHTML =   `<a href="${name}" target="_BLANK">${youtube} </a>`;
+
+
+artUnderView.innerHTML = (artUnder.trim() ==="Yes") ? `<i class="fas fa-check-square"></i>` :`<i class="fas fa-times"></i>` ;
+artPostView.innerHTML =  (artPost.trim() ==="Yes") ? `<i class="fas fa-check-square"></i>` :`<i class="fas fa-times"></i>` ;
+
+
+businessUnderView.innerHTML = (businessUnder.trim() ==="Yes") ? `<i class="fas fa-check-square"></i>` :`<i class="fas fa-times"></i>` ;
+businessPostView.innerHTML =  (businessPost.trim() ==="Yes") ? `<i class="fas fa-check-square"></i>` :`<i class="fas fa-times"></i>` ;
+
+
+languageUnderView.innerHTML = (languageUnder.trim() ==="Yes") ? `<i class="fas fa-check-square"></i>` :`<i class="fas fa-times"></i>` ;
+languagePostView.innerHTML =  (languagePost.trim() ==="Yes") ? `<i class="fas fa-check-square"></i>` :`<i class="fas fa-times"></i>` ;
+
+
+medicineUnderView.innerHTML = (medicineUnder.trim() ==="Yes") ? `<i class="fas fa-check-square"></i>` :`<i class="fas fa-times"></i>` ;
+medicinePostView.innerHTML =  (medicinePost.trim() ==="Yes") ? `<i class="fas fa-check-square"></i>` :`<i class="fas fa-times"></i>` ;
+
+
+engineeringUnderView.innerHTML = (engineeringUnder.trim() ==="Yes") ? `<i class="fas fa-check-square"></i>` :`<i class="fas fa-times"></i>` ;
+engineeringPostView.innerHTML =  (engineeringPost.trim() ==="Yes") ? `<i class="fas fa-check-square"></i>` :`<i class="fas fa-times"></i>` ;
+
+
+scienceUnderView.innerHTML = (scienceUnder.trim() ==="Yes") ? `<i class="fas fa-check-square"></i>` :`<i class="fas fa-times"></i>` ;
+sciencePostView.innerHTML = (sciencePost.trim() ==="Yes") ? `<i class="fas fa-check-square"></i>` :`<i class="fas fa-times"></i>` ;
 
 
 

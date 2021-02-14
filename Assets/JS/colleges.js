@@ -49,6 +49,33 @@ document.addEventListener('DOMContentLoaded', () => {
             twitter:"",
             linkedln:"",
             youtube:"",
+            undercourse:"",
+            postcourse:"",
+
+            artUnder:"",
+            artPost:"",
+
+            businessUnder:"",
+            businessPost:"",
+
+            languageUnder:"",
+            languagePost:"",
+
+            medicineUnder:"",
+            medicinePost:"",
+
+            engineeringUnder:"",
+            engineeringPost:"",
+
+            scienceUnder:"",
+            sciencePost:"",
+
+
+
+
+
+
+
 
 
             
@@ -133,6 +160,53 @@ var linkedlnList = ["https://www.linkedin.com/school/addis-ababa-university/","h
 var youtubeList = [" ","https://www.youtube.com/channel/UCtyhlHBXkxzIsS20ZPd3vow"," https://www.youtube.com/channel/UCoI9V9JZpaCuajFX5aDsiNQ","https://www.youtube.com/channel/UCK7E_YvqrX1uQxe_xoY5GOA","https://www.linkedin.com/company/arba-minch-university/","  "," ","https://www.youtube.com/channel/UCd6Bb1Xc6FyycH0_DFmkxNQ"," https://www.youtube.com/channel/UCdCJRBKLPE_GaQzPozEOaig"," "," https://www.youtube.com/channel/UCITXUDdz0-fwJOroO8pWGFA"," "," "
 ]
 
+//Courses List 
+
+
+var artsCourseUnder = ["Yes","Yes","Yes","Yes","Yes","Yes","Yes"," "," "," "," "," "," "
+
+]
+var artsCoursePost = ["Yes"," ","  "," ","Yes","Yes","Yes","Yes"," "," "," "," "," "
+]
+
+var businessCourseUnder = ["Yes","Yes","Yes","Yes","Yes","Yes","Yes"," "," "," ","Yes","Yes","Yes "
+
+]
+var businessCoursePost = ["Yes","Yes "," Yes"," ","Yes","Yes","Yes"," "," "," ","Yes","Yes","Yes"
+]
+var languageCourseUnder = ["Yes","Yes"," ","Yes","Yes","Yes","Yes"," "," "," "," "," "," "
+
+]
+var languageCoursePost = ["Yes","Yes "," "," ","Yes","Yes","Yes","Yes"," "," ","Yes"," "," "
+]
+var medicineCourseUnder = ["Yes","Yes","Yes","Yes","Yes","Yes","Yes"," "," "," ","Yes","Yes"," "
+
+]
+var medicineCoursePost = ["Yes","Yes "," Yes"," "," ","Yes","Yes","Yes"," "," ","Yes"," "," "
+]
+var engineeringCourseUnder = ["Yes","Yes","Yes","Yes","Yes","Yes","Yes"," "," "," ","Yes"," "," "
+
+]
+var engineeringCoursePost = ["Yes","Yes "," Yes"," ","Yes","Yes","Yes"," "," "," ","Yes"," "," "
+]
+var scienceCourseUnder = ["Yes","Yes","Yes","Yes","Yes","Yes","Yes"," "," "," "," ","Yes"," "
+
+]
+var scienceCoursePost = ["Yes","Yes "," Yes"," ","Yes","Yes","Yes","Yes"," "," "," ","Yes"," "
+]
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     univNameList.forEach((element,index) => {
             console.log(index);
@@ -154,12 +228,46 @@ var youtubeList = [" ","https://www.youtube.com/channel/UCtyhlHBXkxzIsS20ZPd3vow
         addUniv.housing = housingList[index];
         addUniv.sportFacility = sportList[index];
         addUniv.financialAid = financialAidList[index];
+        
+        
 
        //Social Media Section
        addUniv.facebook = facebookList[index]
        addUniv.twitter = twitterList[index]
        addUniv.linkedln = linkedlnList[index]
        addUniv.youtube = youtubeList[index]
+        
+       //Courses Section
+
+       addUniv.artUnder = artsCourseUnder[index]
+       addUniv.artPost = artsCoursePost[index]
+
+       addUniv.businessUnder = businessCourseUnder[index]
+       addUniv.businessPost = businessCoursePost[index]
+
+       addUniv.languageUnder = languageCourseUnder[index]
+       addUniv.languagePost = languageCoursePost[index]
+
+       addUniv.medicineUnder = medicineCourseUnder[index]
+       addUniv.medicinePost = medicineCoursePost[index]
+
+       addUniv.engineeringUnder = engineeringCourseUnder[index]
+       addUniv.engineeringPost = engineeringCoursePost[index]
+
+      
+
+       addUniv.scienceUnder = scienceCourseUnder[index]
+       addUniv.sciencePost = scienceCoursePost[index]   
+
+
+
+
+
+
+
+
+
+
           
             let request = objectStore.add(addUniv);
             request.onsuccess = () => {
