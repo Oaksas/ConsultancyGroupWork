@@ -197,7 +197,7 @@ function addToPersonalDB(){
         addToDb();
         let request = objectStorePersonal.add(addUniv);
         request.onsuccess = () => {
-        console.log('New University added to personal DB');
+alert("Added Successfully")
         } 
     
     } 

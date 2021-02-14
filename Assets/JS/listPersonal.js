@@ -1,4 +1,5 @@
 let DB;
+let order = 1;
 const listList = document.querySelector('.collection'); //The UL
 
 
@@ -72,6 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const divIdCol2 = document.createElement('div');
         const divIdCol3 = document.createElement('div');
         const divIdCol4 = document.createElement('div');
+        const divIdCol5= document.createElement('div');
         
 
 
@@ -80,14 +82,16 @@ document.addEventListener('DOMContentLoaded', () => {
         divIdCol1.className = 'col-1';
         divIdCol2.className = 'col-8';
         divIdCol3.className = 'col-1';
-        divIdCol4.className = 'col-2';
+        divIdCol4.className = 'col-1';
+        divIdCol5.className = 'col-1';
 
     
         divIdRow.setAttribute('data-task-id',id);
 
         
 
-        divIdCol1.innerHTML = id;
+        divIdCol1.innerHTML = order;    
+        order +=1;
         divIdCol2.innerHTML = `
          
         <a href="./collegeInfo.html?univName=${univName}">${univName} </a>
@@ -96,17 +100,47 @@ document.addEventListener('DOMContentLoaded', () => {
         divIdCol3.innerHTML = arg;
         divIdCol4.innerHTML = rank;
 
+        divIdCol5.classList.add = 'delete-item';
+        divIdCol5.innerHTML = ` <i class="fas fa-trash-alt"></i>`;
+
+        divIdRow.setAttribute('data-list-id',id);
+
     
         divIdRow.appendChild(divIdCol1);
         divIdRow.appendChild(divIdCol2);
         divIdRow.appendChild(divIdCol3);
         divIdRow.appendChild(divIdCol4);
+        divIdRow.appendChild(divIdCol5);
 
         listList.appendChild(divIdRow);
 
 
       
         
+    }
+    listList.addEventListener('click', removeTask);
+
+    function removeTask(e) {
+
+
+            if (confirm('Are You Sure about that ?')) {
+                // get the task id
+                let univID = Number(e.target.parentElement.parentElement.getAttribute('data-list-id'));
+                // use a transaction
+
+
+                let transaction = DB.transaction(['personalList'], 'readwrite');
+                let objectStore = transaction.objectStore('personalList');
+                objectStore.delete(univID);
+
+                transaction.oncomplete = () => {
+                    e.target.parentElement.parentElement.remove();
+                }
+
+            }
+
+        
+
     }
 
 
